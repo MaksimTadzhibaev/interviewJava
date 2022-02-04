@@ -22,17 +22,17 @@ public class StudentDAOImpl implements StudentDAO {
     //        READ (SELECT BY ID (получение данных по id)
     public Student findById (Long id){
         Session session = sessionFactory.openSession();
-        Student product = session.find(Student.class, id);
+        Student student = session.find(Student.class, id);
         session.close();
-        return product;
+        return student;
     }
 
     //        READ (SELECT ALL (плучение всех данных таблицы)
     public List<Student> findAll(){
         Session session = sessionFactory.openSession();
-        List <Student> allProducts = session.createQuery("select s from Student s", Student.class).getResultList();
+        List <Student> allStudents = session.createQuery("select s from Student s", Student.class).getResultList();
         session.close();
-        return allProducts;
+        return allStudents;
     }
 
     //        UPDATE (обновление данных в существующим поле или создание нового при отсутствии данных)
