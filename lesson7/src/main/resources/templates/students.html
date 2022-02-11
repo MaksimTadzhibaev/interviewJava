@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light" th:replace="fragments/navigation::navigation"></nav>
+
+<div class="container">
+  <div class="row py-2">
+    <div class="col-12">
+      <a class="btn btn-primary" th:href="@{/student/new}">Add Student</a>
+    </div>
+
+    <div class="col-12">
+      <table class="table table-bordered my-2">
+        <tbody>
+        <tr  th:each="student : ${students}">
+          <th scope="row" th:text="${student.id}">1</th>
+          <td th:text="${student.name}">a</td>
+          <td th:text="${student.age}">1</td>
+          <td>
+            <a class="btn btn-success" th:href="@{/student/{id}(id = ${student.id})}">
+              <i class="fas fa-edit"></i></a>
+            <form class="d-inline" th:method="delete" th:action="@{/student/{id} (id = ${student.id})}">
+              <button type="submit" class="btn btn-danger">
+                <i class="far fa-trash-alt"></i>
+              </button>
+            </form>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<th:block th:replace="fragments/scripts::scripts"></th:block>
+
+</body>
+</html>
